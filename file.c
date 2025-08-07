@@ -20,10 +20,10 @@ node* findLastNode(queue* myQueue)
 void enqueue(queue* myQueue, const int data)
 {
     node* new = malloc(sizeof(*new));
+    assert(myQueue != NULL && new != NULL);
     new->val = data;
     new->next = NULL;
-    assert(myQueue != NULL && new != NULL);
-
+    
     if(myQueue->first == NULL)
     {
         myQueue->first = new;
@@ -40,7 +40,7 @@ int dequeue(queue* myQueue)
 {
     assert(myQueue != NULL);
 
-    int dValue = 0;
+    int dValue = EOF;
     if(myQueue->first != NULL)
     {
         node* temp = myQueue->first;
