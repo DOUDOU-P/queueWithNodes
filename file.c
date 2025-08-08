@@ -19,20 +19,20 @@ node* findLastNode(queue* myQueue)
 }
 void enqueue(queue* myQueue, const int data)
 {
-    node* new = malloc(sizeof(*new));
-    assert(myQueue != NULL && new != NULL);
-    new->val = data;
-    new->next = NULL;
+    node* newNode = malloc(sizeof(*newNode));
+    assert(myQueue != NULL && newNode != NULL);
+    newNode->val = data;
+    newNode->next = NULL;
     
     if(myQueue->first == NULL)
     {
-        myQueue->first = new;
+        myQueue->first = newNode;
         (myQueue->size)++;
         return;
     }
 
     node* lastNode = findLastNode(myQueue);
-    lastNode->next = new;
+    lastNode->next = newNode;
     (myQueue->size)++;
 }
 
@@ -40,17 +40,16 @@ int dequeue(queue* myQueue)
 {
     assert(myQueue != NULL);
 
-    int dValue = EOF;
     if(myQueue->first != NULL)
     {
         node* temp = myQueue->first;
-        dValue = temp->val;
         myQueue->first = temp->next;
         (myQueue->size)--;
         free(temp);
+        return 1;
     }
 
-    return dValue;
+    return 0;
 }
 
 void displayQueue(queue* myQueue)
@@ -77,9 +76,6 @@ void clear(queue* myQueue)
 {
     assert(myQueue != NULL);
 
-    if(myQueue->first != NULL)
-    {
+    while(myQueue->first != NULL)
         dequeue(myQueue);
-        clear(myQueue);
-    }
 }

@@ -12,13 +12,13 @@ int main(void)
         enqueue(&myQueue, i);
    }
 
-   printf("Affichage de la pile: ");
+   printf("Affichage de la file: ");
    displayQueue(&myQueue);
 
-   printf("On defile %d\n", dequeue(&myQueue));
-   printf("On defile %d\n", dequeue(&myQueue));
+   dequeue(&myQueue);
+   dequeue(&myQueue);
 
-   printf("Affichage de la pile: ");
+   printf("Affichage de la file: ");
    displayQueue(&myQueue);
 
    printf("Taille de la file: %ld\n", getSize(&myQueue));
